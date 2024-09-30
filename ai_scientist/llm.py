@@ -2,6 +2,11 @@ import backoff
 import openai
 import json
 
+#client = openai.AzureOpenAI(
+#            base_url=f"{endpoint}/openai/deployments/{deployment}/completions",
+#            api_key=api_key,
+#            api_version="2023-08-01-preview",
+#        )
 
 # Get N responses from a single message, used for ensembling.
 @backoff.on_exception(backoff.expo, (openai.RateLimitError, openai.APITimeoutError))
@@ -25,7 +30,8 @@ def get_batch_responses_from_llm(
     ]:
         new_msg_history = msg_history + [{"role": "user", "content": msg}]
         response = client.chat.completions.create(
-            model=model,
+            #model=model,
+            model="gpt4o",
             messages=[
                 {"role": "system", "content": system_message},
                 *new_msg_history,
@@ -156,7 +162,8 @@ def get_response_from_llm(
     ]:
         new_msg_history = msg_history + [{"role": "user", "content": msg}]
         response = client.chat.completions.create(
-            model=model,
+            #model=model,
+            model="gpt4o",
             messages=[
                 {"role": "system", "content": system_message},
                 *new_msg_history,

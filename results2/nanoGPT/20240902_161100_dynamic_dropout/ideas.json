@@ -1,0 +1,47 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": false
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": false
+    },
+    {
+        "Name": "dynamic_dropout",
+        "Title": "Dynamic Dropout: Progressive Regularization in Transformer Models",
+        "Experiment": "Modify the train function to implement a dynamic dropout schedule that decreases linearly over time. Introduce new configuration parameters for initial and final dropout rates. Update the dropout rate at regular intervals during training, such as at the end of each epoch. Compare the convergence speed and final performance with a baseline model using a fixed dropout rate.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "activation_function_experiment",
+        "Title": "Exploring the Impact of Activation Functions on Transformer Model Performance",
+        "Experiment": "Modify the MLP class to allow for different activation functions based on a new configuration parameter in GPTConfig. Update the MLP class to use GELU, ReLU, Leaky ReLU, or Swish as specified. Conduct experiments for each activation function and compare convergence speed, final loss, and generated text quality.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_lr_schedule",
+        "Title": "Adaptive Learning Rate Schedules: Dynamic Adjustment Based on Training Performance",
+        "Experiment": "Modify the train function to implement an adaptive learning rate schedule. Introduce a mechanism to track the rate of change of validation loss. Adjust the learning rate dynamically based on this metric. Compare the convergence speed, final training loss, and validation loss with the baseline model using static and cosine decay schedules.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": false
+    }
+]

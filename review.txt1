@@ -1,0 +1,59 @@
+{
+    "Summary": "The paper proposes an adaptive dual-scale denoising approach for low-dimensional diffusion models to balance global structure and local details in generated samples. The method introduces two parallel branches for processing the original input and an upscaled version, with a learnable, timestep-conditioned weighting mechanism to adjust their contributions dynamically. The approach is evaluated on four 2D datasets, showing improvements in sample quality and KL divergence.",
+    "Strengths": [
+        "The paper tackles a well-defined and practical problem in low-dimensional diffusion models.",
+        "The proposed dual-scale architecture and adaptive weighting mechanism are novel and interesting.",
+        "The paper provides quantitative and qualitative evaluations demonstrating improvements in sample quality."
+    ],
+    "Weaknesses": [
+        "The paper lacks sufficient ablation studies to fully understand the contribution of each component of the proposed approach.",
+        "There is limited discussion on the limitations and potential negative societal impacts of the work.",
+        "The clarity of the paper is compromised by the lack of detailed explanations of some components, such as the autoencoder aggregator.",
+        "The paper does not compare its approach with other state-of-the-art methods beyond the baseline single-scale diffusion model.",
+        "The novelty of the approach is limited as multi-scale and adaptive weighting mechanisms have been explored in various contexts within generative modeling.",
+        "The evaluation is limited to four simple 2D datasets, which might not be sufficient to demonstrate the generalizability and robustness of the method.",
+        "The computational efficiency is a concern, with training times approximately doubling.",
+        "The proposed method's applicability to higher-dimensional data is not convincingly demonstrated.",
+        "The presentation of the results could be improved with more detailed visualizations and additional cases."
+    ],
+    "Originality": 3,
+    "Quality": 2,
+    "Clarity": 2,
+    "Significance": 3,
+    "Questions": [
+        "Can you provide additional ablation studies to better understand the contribution of each component of the proposed approach?",
+        "Can you clarify the details of the autoencoder aggregator used in the method?",
+        "How does your approach compare with other state-of-the-art methods not included in the paper?",
+        "How does the proposed method perform on more complex and high-dimensional datasets?",
+        "Can the authors provide more detailed ablation studies to isolate the impact of the dual-scale architecture and the adaptive weighting mechanism?",
+        "What measures are taken to ensure the ethical considerations and authorship accountability given the paper's claim of being autonomously generated?",
+        "Can the authors provide more details on the autoencoder aggregator?",
+        "How does the performance change with different types of aggregators?",
+        "Can the authors include more visualizations and cases in the qualitative analysis?",
+        "Can the authors provide more detailed explanations and justifications for the choice of the learnable, timestep-conditioned weighting mechanism?",
+        "How does the method perform on higher-dimensional datasets? Are there any plans to extend the approach to such scenarios?",
+        "Can the authors provide more insights into the computational complexity and potential ways to mitigate the increased training time?",
+        "Can the authors provide more detailed explanations and visualizations of the experimental results to better demonstrate the improvements?",
+        "How does the proposed method distinctly advance beyond existing multi-scale and adaptive diffusion models?",
+        "What are the specific limitations and potential negative societal impacts of the proposed approach?"
+    ],
+    "Limitations": [
+        "The paper should address the increased computational complexity of the proposed method and its implications for practical applications.",
+        "There is a need for a detailed discussion on potential negative societal impacts and ethical considerations.",
+        "The proposed method's applicability to high-dimensional data is not explored.",
+        "The ethical concerns regarding the autonomous generation of the paper need to be addressed.",
+        "The increased computational cost is a significant limitation.",
+        "The variability in performance on the dino dataset indicates potential inconsistency for more complex data distributions.",
+        "The trade-off between improved sample quality and increased computational complexity needs careful consideration.",
+        "The focus on low-dimensional data limits the broader applicability of the method, and this should be discussed more thoroughly.",
+        "The computational cost and potential scalability issues are significant limitations.",
+        "There is an insufficient discussion on potential negative societal impacts."
+    ],
+    "Ethical Concerns": true,
+    "Soundness": 2,
+    "Presentation": 2,
+    "Contribution": 2,
+    "Overall": 3,
+    "Confidence": 4,
+    "Decision": "Reject"
+}

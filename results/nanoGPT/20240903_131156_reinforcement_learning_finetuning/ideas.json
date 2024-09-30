@@ -1,0 +1,92 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": true
+    },
+    {
+        "Name": "char_masking_augmentation",
+        "Title": "Character-Level Masking Augmentation: Enhancing Robustness and Generalization in Small Language Models",
+        "Experiment": "Implement a data augmentation technique where a certain percentage of characters in the input sequences are randomly masked during training. Modify the get_batch function to randomly replace some characters in the batch with a mask token (e.g., a special character or a zero value). Compare the training dynamics, convergence speed, and final performance with the baseline model. Evaluate the model on both the original datasets and artificially corrupted datasets (with random character deletions or replacements) to measure robustness.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "knowledge_distillation",
+        "Title": "Knowledge Distillation: Enhancing Small Language Model Training with Teacher-Student Techniques",
+        "Experiment": "First, train a larger teacher model on the same datasets. Use the teacher model to generate soft targets (probabilities) for the training data. Modify the training loop of the smaller student model to use a combination of the original labels and the soft targets from the teacher model. Specifically, use a weighted loss function that combines cross-entropy loss on the hard labels and Kullback-Leibler divergence loss on the soft targets. Compare the performance of the student model trained with and without distillation.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": false
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning: Progressive Difficulty Adjustment for Efficient Training of Small Language Models",
+        "Experiment": "Implement a curriculum learning strategy by defining a schedule that starts with simpler examples (shorter sequences or sequences with fewer unique characters) and gradually increases the difficulty. Modify the get_batch function to select sequences according to the current curriculum stage. Start with sequences of length 50 and simpler character sets, and increase the length by 50 tokens and character complexity every 1000 iterations until reaching the maximum sequence length and full character set. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "multi_task_learning",
+        "Title": "Multi-Task Learning: Enhancing Generalization by Training on Multiple Related Tasks",
+        "Experiment": "Modify the `train` function to handle multiple tasks by defining additional losses for auxiliary tasks such as next-character prediction and masked character prediction. Adjust the training loop to compute these losses and combine them with the primary task\u2019s loss using a weighted sum. Adapt the `get_batch` function to provide data suitable for the auxiliary tasks by including masked characters. Compare the training dynamics, convergence speed, and final performance with the baseline model on the original tasks and evaluate generalization on unseen data.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "memory_augmented_nn",
+        "Title": "Memory Augmented Neural Networks: Enhancing Long-Term Dependency Learning in Transformer Models",
+        "Experiment": "Modify the GPT class to include a simple memory module, such as a key-value memory matrix. Implement memory read and write mechanisms where the keys are generated from the hidden states, and the values are the corresponding contextual information. Integrate these memory operations with the transformer's forward pass. Adjust the training loop to handle the updated model architecture. Compare the performance of the memory-augmented model with the baseline model on the same datasets. Measure improvements in long-term dependency tasks and generalization.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": false
+    },
+    {
+        "Name": "sparse_attention",
+        "Title": "Sparse Attention: Enhancing Transformer Efficiency with Selective Focus",
+        "Experiment": "Modify the CausalSelfAttention class to include options for sparse attention patterns such as fixed blocks, strided patterns, and random sparsity. Adjust the forward pass to apply these patterns selectively. Specifically, add parameters to the class for the type of sparsity and implement corresponding logic in the forward method. Compare the performance and training dynamics of the modified model with the baseline model on the same datasets. Measure improvements in computational efficiency (e.g., training time, memory usage) and model performance (e.g., loss, accuracy).",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "reinforcement_learning_finetuning",
+        "Title": "Reinforcement Learning Fine-tuning: Enhancing Small Language Models with Reward Signals",
+        "Experiment": "Implement a reinforcement learning phase in the training loop. Define a reward function that evaluates generated text based on fluency, grammatical correctness, and contextual relevance. Modify the train function to include an RL fine-tuning phase after the initial supervised training. Use policy gradient methods (e.g., REINFORCE) to update the model based on reward signals. Compare the quality of text generated by the RL-fine-tuned model with the baseline model.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "contrastive_learning",
+        "Title": "Contrastive Learning: Enhancing Language Models with Discriminative Representations",
+        "Experiment": "Modify the training loop to include a contrastive learning objective. Specifically, create positive pairs as consecutive sequences and negative pairs as non-consecutive sequences from the dataset. Modify the forward pass to generate embeddings for these pairs. Implement a contrastive loss function, such as InfoNCE, and add it to the training loop alongside the traditional language modeling loss. Compare the performance, generalization, and robustness of the model trained with and without contrastive learning.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    }
+]

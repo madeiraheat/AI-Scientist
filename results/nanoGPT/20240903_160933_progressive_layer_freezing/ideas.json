@@ -1,0 +1,83 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": false
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": false
+    },
+    {
+        "Name": "char_level_augmentation",
+        "Title": "Character-Level Data Augmentation: Enhancing Generalization in Small Language Models",
+        "Experiment": "Implement character-level data augmentation techniques such as random swaps, insertions, deletions, and substitutions within the get_batch function with an adjustable probability parameter to control augmentation extent. Compare the training dynamics, convergence speed, and final performance with the baseline model across all datasets using metrics like perplexity and accuracy. Analyze improvements in robustness and generalization. Apply augmentation during the data loading phase to ensure simplicity in implementation.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning for Character-Level Language Models: Progressive Complexity in Training Data",
+        "Experiment": "Implement a curriculum learning strategy in the get_batch function. Start with simpler data (e.g., shorter sequences or more common character patterns) and progressively increase the complexity of the training data. Compare training dynamics, convergence speed, and final performance with the baseline model using metrics like perplexity and accuracy across all datasets.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": false
+    },
+    {
+        "Name": "dynamic_routing",
+        "Title": "Dynamic Routing: Enhancing Transformer Efficiency Through Input-Dependent Block Selection",
+        "Experiment": "Implement a dynamic routing mechanism within the transformer model. Modify the forward function in the GPT class to include a gating mechanism that routes different input sequences to different existing blocks. Compare the training dynamics, convergence speed, and final performance with the baseline model across all datasets using metrics like perplexity and accuracy. Analyze improvements in efficiency and specialization of routed blocks.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 7,
+        "novel": false
+    },
+    {
+        "Name": "progressive_layer_freezing",
+        "Title": "Progressive Layer Freezing: Enhancing Training Efficiency in Transformer Models",
+        "Experiment": "Modify the training loop to progressively freeze the weights of lower layers as training progresses. Specifically, set the requires_grad attribute of the layers to False at regular intervals (e.g., every 1000 iterations). Compare the training dynamics, convergence speed, and final performance with the baseline model across all datasets. Ensure that higher layers remain trainable throughout the training process.",
+        "Interestingness": 7,
+        "Feasibility": 8,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "knowledge_distillation",
+        "Title": "Knowledge Distillation: Enhancing Small Model Training with Pre-trained Teacher Models",
+        "Experiment": "Modify the training loop to incorporate a teacher-student paradigm. Use a pre-trained larger GPT model as the teacher. During training, the student model will learn from both the ground truth labels and the output logits of the teacher model. Modify the loss function to include a distillation loss component (e.g., Kullback-Leibler divergence) that aligns the student's output distribution with the teacher's output distribution. Compare the training dynamics, convergence speed, and final performance with the baseline model across all datasets.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "factorized_token_embedding",
+        "Title": "Factorized Token Embedding: Enhancing Parameter Efficiency in Transformer Models",
+        "Experiment": "Modify the GPT class to replace the token embedding layer with a factorized token embedding layer. This involves creating two smaller matrices instead of one large embedding matrix. The first matrix will map the tokens to a lower-dimensional space (embedding_dim // 2), and the second matrix will project them back to the original embedding dimension. Adjust the forward method to accommodate these changes. Compare the modified model with the baseline model on metrics such as training speed, inference speed, memory usage, and final performance across all datasets. Implement the changes in the GPT class and adjust the forward method accordingly.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_optimizer",
+        "Title": "Adaptive Optimizer: Dynamic Adjustment of Learning Rate and Weight Decay for Efficient Training",
+        "Experiment": "Modify the configure_optimizers function to include a mechanism that dynamically adjusts the learning rate and weight decay based on the training progress and loss landscape. Specifically, use the rate of change of the loss (loss gradient) to adjust the learning rate: increase if the loss decreases rapidly and decrease if the loss decreases slowly or increases. Adjust the weight decay based on the variance of the loss. Perform these adjustments at regular intervals, such as every 500 iterations. Ensure the learning rate does not become too small or too large.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": false
+    }
+]

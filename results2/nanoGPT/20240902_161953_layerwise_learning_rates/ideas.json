@@ -1,0 +1,110 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": true
+    },
+    {
+        "Name": "data_augmentation",
+        "Title": "Character-Level Data Augmentation: Enhancing Generalization in Language Models",
+        "Experiment": "Implement various data augmentation strategies for character-level text, including random insertion, deletion, swapping, and substitution of characters. Each augmentation type should have a configurable probability. Modify the get_batch function to apply these augmentations dynamically during the batch creation process. Measure the impact on training time and compare the performance of the model with and without data augmentation on multiple datasets.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": false
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning: Progressive Training for Enhanced Model Performance",
+        "Experiment": "Modify the get_batch function to implement a curriculum learning strategy. Start training the model on shorter sequences or simpler data samples and gradually increase the difficulty as training progresses. Difficulty can be adjusted by dynamically changing the block_size or by selecting samples based on a predefined difficulty metric such as character patterns or n-gram frequency. Measure the impact on training speed, convergence, and final model performance.",
+        "Interestingness": 7,
+        "Feasibility": 8,
+        "Novelty": 6,
+        "novel": false
+    },
+    {
+        "Name": "knowledge_distillation",
+        "Title": "Knowledge Distillation: Enhancing Small Model Training with Teacher-Student Framework",
+        "Experiment": "1. Train a larger teacher model from scratch using the same dataset. 2. Modify the training loop of the student model to include the distillation loss. The distillation loss will be a combination of the cross-entropy loss with the ground truth labels and the Kullback-Leibler divergence between the student and teacher logits. 3. Implement a function to compute the Kullback-Leibler divergence between the logits of the student and teacher models. 4. Compare the performance of the student model trained with and without knowledge distillation using metrics such as training loss, validation loss, and inference speed on multiple datasets.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": false
+    },
+    {
+        "Name": "adaptive_lr",
+        "Title": "Adaptive Learning Rate: Dynamic Adjustment Based on Performance Metrics",
+        "Experiment": "Modify the train function to include a feedback mechanism that adjusts the learning rate based on real-time performance metrics such as training or validation loss. Implement a function that monitors these metrics using moving averages and adjusts the learning rate accordingly. Increase the learning rate by a small percentage (e.g., 5%) when the loss decreases by more than a certain threshold (e.g., 1%) consistently over a set number of iterations (e.g., 100). Decrease the learning rate by a similar percentage when the loss stagnates or increases by the same threshold. Compare the training dynamics, convergence speed, and final performance with the baseline model using static learning rate schedules.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": false
+    },
+    {
+        "Name": "weight_initialization",
+        "Title": "Impact of Weight Initialization Techniques on Training Dynamics and Model Performance",
+        "Experiment": "Modify the _init_weights function in the GPT model to support multiple initialization techniques, including Xavier, He, and orthogonal initialization. Implement a mechanism to switch between these techniques easily. Compare the training loss, validation loss, and convergence speed for each initialization technique across multiple datasets. Analyze the results to determine the best initialization technique based on these metrics.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "sparse_attention",
+        "Title": "Sparse Attention Mechanisms: Enhancing Transformer Efficiency",
+        "Experiment": "Modify the CausalSelfAttention class to support sparse attention mechanisms. Add configurations to enable or disable sparse attention and implement the logic for block-sparse or local attention during the forward pass. Compare training dynamics, memory usage, and final performance of models using dense vs. sparse attention across multiple datasets.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 8,
+        "novel": false
+    },
+    {
+        "Name": "multi_objective_optimization",
+        "Title": "Multi-Objective Optimization in Language Model Training",
+        "Experiment": "1. Modify the training loop to include robustness as an auxiliary objective by introducing slight perturbations to the input during training. 2. Monitor inference speed (tokens per second) as another auxiliary objective. 3. Implement a multi-objective loss function combining cross-entropy loss, robustness loss (difference in output logits for perturbed vs. unperturbed inputs), and an inference speed term. 4. Compare the performance of the multi-objective optimized model against the baseline model using metrics like training loss, validation loss, robustness, and inference speed.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "self_supervised_learning",
+        "Title": "Exploring Self-Supervised Learning Objectives for Character-Level Language Models",
+        "Experiment": "1. Implement multiple self-supervised learning objectives: Masked Language Modeling (MLM), Next Character Prediction (NCP), and Contrastive Loss. 2. Modify the training loop to incorporate these objectives, balancing them with the primary cross-entropy loss. Implement a weighted combination of these losses, where the weights can be tuned as hyperparameters. 3. Evaluate the impact of each self-supervised objective by training models with each objective individually as well as in combination. 4. Compare the training dynamics, convergence speed, and final performance of models trained with different self-supervised objectives across multiple datasets (shakespeare_char, enwik8, text8).",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": false
+    },
+    {
+        "Name": "regularization_techniques",
+        "Title": "Exploring Advanced Regularization Techniques for Character-Level Language Models",
+        "Experiment": "1. Implement Layer Dropout: Modify the Block class to include optional layer dropout. 2. Implement Label Smoothing: Modify the loss computation in the forward method to include label smoothing. 3. Implement Mixout: Integrate Mixout during the weight updates in the optimizer. 4. Define specific configurations for each technique to ensure structured experimentation. 5. Compare training loss, validation loss, convergence speed, and final model performance for each regularization technique across multiple datasets (shakespeare_char, enwik8, text8).",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": false
+    },
+    {
+        "Name": "meta_learning",
+        "Title": "Meta-Learning for Improved Generalization Across Diverse Datasets",
+        "Experiment": "Implement the Model-Agnostic Meta-Learning (MAML) algorithm into the training loop. Modify the train function to include the following steps: 1) Sample a batch of tasks (datasets). 2) For each task, perform an inner-loop update using a small subset of data. 3) After inner-loop updates, aggregate the losses and perform an outer-loop update to optimize the model parameters. Measure and compare the performance of the meta-learned model with the baseline model on multiple datasets (shakespeare_char, enwik8, text8) in terms of training loss, validation loss, and adaptability to new data.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": false
+    }
+]

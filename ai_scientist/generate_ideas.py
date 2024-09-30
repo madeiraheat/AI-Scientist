@@ -8,7 +8,13 @@ from ai_scientist.llm import get_response_from_llm, extract_json_between_markers
 import requests
 import backoff
 
+
+endpoint = os.getenv('ENDPOINT')
+api_key = os.getenv('API_KEY')
+deployment = os.getenv('DEPLOYMENT')
+
 S2_API_KEY = os.getenv("S2_API_KEY")
+
 
 idea_first_prompt = """{task_description}
 <experiment.py>
@@ -77,6 +83,7 @@ def generate_ideas(
     client,
     model,
     skip_generation=False,
+    #skip_generation=True,
     max_num_generations=20,
     num_reflections=5,
 ):
@@ -308,7 +315,7 @@ def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
     return papers
 
 
-novelty_system_msg = """You are an ambitious AI PhD student who is looking to publish a paper that will contribute significantly to the field.
+novelty_system_msg = """You are an ambitious Techno-Economic Assessment in Communications PhD student who is looking to publish a paper that will contribute significantly to the field.
 You have an idea and you want to check if it is novel or not. I.e., not overlapping significantly with existing literature or already well explored.
 Be a harsh critic for novelty, ensure there is a sufficient contribution in the idea for a new conference or workshop paper.
 You will be given access to the Semantic Scholar API, which you may use to survey the literature and find relevant papers to help you make your decision.
@@ -451,7 +458,7 @@ if __name__ == "__main__":
     NUM_REFLECTIONS = 5
     import argparse
 
-    parser = argparse.ArgumentParser(description="Generate AI scientist ideas")
+    parser = argparse.ArgumentParser(description="Generate Techno-Economic Assessment In Communications scientist ideas")
     # add type of experiment (nanoGPT, Boston, etc.)
     parser.add_argument(
         "--experiment",
@@ -511,7 +518,12 @@ if __name__ == "__main__":
 
         print(f"Using OpenAI API with model {args.model}.")
         client_model = "gpt-4o-2024-05-13"
-        client = openai.OpenAI()
+ 
+        client = openai.AzureOpenAI(
+	    base_url=f"{endpoint}/openai/deployments/{deployment}/chat/completions?api_version=2024-02-15-preview",
+            api_key=api_key, 
+            api_version="2024-02-15-preview"
+        )
     elif args.model == "deepseek-coder-v2-0724":
         import openai
 

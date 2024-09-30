@@ -277,7 +277,7 @@ def load_paper(pdf_path, num_pages=None, min_size=100):
     except Exception as e:
         print(f"Error with pymupdf4llm, falling back to pymupdf: {e}")
         try:
-            doc = pymupdf.open(pdf_path)  # open a document
+            doc = pymupdf.open(pdf_path, encoding='utf-8')  # open a document
             if num_pages:
                 doc = doc[:num_pages]
             text = ""
@@ -299,7 +299,7 @@ def load_paper(pdf_path, num_pages=None, min_size=100):
 
 
 def load_review(path):
-    with open(path, "r") as json_file:
+    with open(path, "r", encoding='utf-8') as json_file:
         loaded = json.load(json_file)
     return loaded["review"]
 
@@ -330,7 +330,7 @@ Note that while each review is formatted differently according to each reviewer'
     ):
         txt_path = paper.replace(".pdf", ".txt")
         if os.path.exists(txt_path):
-            with open(txt_path, "r") as f:
+            with open(txt_path, "r", encoding='utf-8') as f:
                 paper_text = f.read()
         else:
             paper_text = load_paper(paper)
@@ -389,7 +389,7 @@ def perform_improvement(review, coder):
 {review}
 """
 
-Improve the text using the review.'''.format(
+Improve the whole text of the research paper in English using the review and maintaining the same structure.'''.format(
         review=json.dumps(review)
     )
     coder_out = coder.run(improvement_prompt)

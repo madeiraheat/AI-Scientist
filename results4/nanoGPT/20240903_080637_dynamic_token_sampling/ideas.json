@@ -1,0 +1,110 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": false
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": false
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning: Gradual Increase in Sequence Complexity for Efficient Training",
+        "Experiment": "Modify the get_batch function to implement curriculum learning. Start with very short sequences (e.g., 32 characters) and gradually increase the sequence length based on the number of training iterations (e.g., increase by 32 characters every 1000 iterations). Monitor training and validation loss to compare the performance with baseline training without curriculum learning. Implement a dynamic adjustment mechanism within the training loop that adjusts the block_size parameter used in get_batch.",
+        "Interestingness": 7,
+        "Feasibility": 6,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "multi_task_learning",
+        "Title": "Multi-Task Learning: Leveraging Multiple Datasets for Improved Generalization",
+        "Experiment": "Modify the training loop to handle multiple datasets (e.g., shakespeare_char and enwik8) within a single training run. Update the get_batch function to fetch data from different datasets and switch between them every epoch. Compute the loss for each task separately and average them. Compare the performance of the multi-task learning model against single-task models on each dataset using metrics like training loss, validation loss, and inference speed.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_eval_frequency",
+        "Title": "Adaptive Evaluation Frequency: Dynamic Adjustment of Evaluation Intervals for Efficient Training",
+        "Experiment": "Modify the training loop to dynamically adjust the evaluation interval based on the rate of change in validation loss. Implement specific criteria for adjusting the `eval_interval`: Increase the interval if the validation loss does not improve by more than 1% for 500 iterations, and decrease it if the validation loss improves by more than 5% within 100 iterations. Add safeguards to ensure the evaluation interval is not smaller than 100 iterations and not larger than 2000 iterations. Compare the training dynamics, total training time, and final performance with the baseline model that uses a fixed evaluation interval.",
+        "Interestingness": 7,
+        "Feasibility": 8,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_token_sampling",
+        "Title": "Dynamic Token Importance Sampling for Efficient Training",
+        "Experiment": "Modify the get_batch function to implement dynamic token importance sampling. Calculate the frequency of each token in the dataset once before training and adjust the sampling probability inversely proportional to the frequency (e.g., rarer tokens have a higher chance of being sampled). Update the training loop to use this modified get_batch function. Compare the training dynamics, convergence speed, and final performance with the baseline model that uses uniform sampling.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "synthetic_data_augmentation",
+        "Title": "Synthetic Data Augmentation: Enhancing Training with Generated Data",
+        "Experiment": "Implement a synthetic data generation module that creates additional training examples using n-gram models based on the original dataset. Modify the get_batch function to mix real and synthetic data according to a ratio of 70% real data and 30% synthetic data. Update the training loop to integrate this modified get_batch function. Compare the training dynamics, validation loss, and generalization performance with the baseline model that uses only real data.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_dropout",
+        "Title": "Dynamic Dropout: Adaptive Regularization for Improved Model Generalization",
+        "Experiment": "Modify the training loop to dynamically adjust the dropout rate during training. Implement a function within the training loop that decays the dropout rate using a cosine schedule based on the number of iterations. The dropout rate will start at 0.5 and decay to 0.1. Update the dropout rate of the model layers at each iteration before the forward pass by iterating through the model's dropout layers and setting their dropout probability. Compare the training dynamics, convergence speed, and final performance with the baseline model that uses a fixed dropout rate.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_model_complexity",
+        "Title": "Dynamic Model Complexity Adjustment for Efficient Training",
+        "Experiment": "Start with a smaller number of layers. Monitor training and validation losses. Increase the number of layers based on predefined criteria (e.g., every 1000 iterations or plateauing validation loss). Modify the training loop to allow for adding layers dynamically. Evaluate training dynamics, convergence speed, and final performance compared to a baseline model with fixed complexity.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_gradient_clipping",
+        "Title": "Adaptive Gradient Clipping: Dynamic Adjustment for Stable and Efficient Training",
+        "Experiment": "Modify the training loop to implement adaptive gradient clipping. Use a cosine schedule to decay the gradient clipping threshold from an initial value of 5.0 to a final value of 0.5 over the total number of training iterations. Update the gradient clipping step in the training loop (specifically where `torch.nn.utils.clip_grad_norm_` is called) to use this dynamic threshold. Compare the training dynamics, convergence speed, and final performance with the baseline model that uses a fixed gradient clipping threshold.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "learned_optimizers",
+        "Title": "Learned Optimizers: Adaptive Parameter Updates for Efficient Training",
+        "Experiment": "Implement a shallow neural network that serves as a learned optimizer. This network will take gradients as inputs and output parameter updates. Modify the training loop to integrate this learned optimizer. The learned optimizer will be trained in parallel with the main model, using a loss function designed to improve the main model's training. Compare the training dynamics, convergence speed, final performance, and computational overhead with the baseline model using a fixed optimizer like AdamW.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": false
+    },
+    {
+        "Name": "reinforcement_learning_rewards",
+        "Title": "Incorporating Reinforcement Learning Rewards for Optimized Language Model Training",
+        "Experiment": "1. Define a reward function that captures desired properties of the output, such as grammatical correctness or sentiment. 2. Modify the training loop to include this reward signal in the loss function. 3. Utilize policy gradients to update the model based on both the traditional loss and the reward. 4. Compare the performance with the baseline model using metrics like training loss, validation loss, and qualitative aspects of generated text.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": true
+    }
+]

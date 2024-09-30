@@ -1,0 +1,47 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": false
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": true
+    },
+    {
+        "Name": "sparse_attention",
+        "Title": "Sparse Attention Mechanisms: Efficient Long-Range Dependency Learning in Transformers",
+        "Experiment": "Modify the CausalSelfAttention class to include a block-sparse attention mechanism. Implement attention masks that partition the input sequence into blocks and compute attention only within and across a few blocks. Compare the performance, computational efficiency, and generalization ability of models trained with and without sparse attention using the existing datasets.",
+        "Interestingness": 7,
+        "Feasibility": 6,
+        "Novelty": 6,
+        "novel": false
+    },
+    {
+        "Name": "activation_function_experiment",
+        "Title": "Exploring the Impact of Activation Functions on Transformer Models",
+        "Experiment": "Modify the MLP class to support different activation functions (ReLU, Leaky ReLU, Swish, ELU, Tanh). Implement a mechanism to select the activation function via configuration. Run experiments with each activation function and compare the training dynamics, convergence speed, final performance, and inference speed. Results will be evaluated based on training loss, validation loss, and inference time per token.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 5,
+        "novel": false
+    },
+    {
+        "Name": "gradient_noise_injection",
+        "Title": "Gradient Noise Injection: Enhancing Generalization in Transformer Models",
+        "Experiment": "Modify the training loop to inject Gaussian noise into the gradients before updating the model parameters. Implement a configurable mechanism to control the noise level and a noise schedule that decreases over time. Log the gradient norms with and without noise. Compare the training dynamics, convergence speed, final performance, and generalization ability with and without gradient noise using the existing datasets. Experiment with multiple noise levels to understand the impact better.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 7,
+        "novel": true
+    }
+]

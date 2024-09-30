@@ -1,0 +1,48 @@
+{
+    "Summary": "The paper introduces an adaptive dual-scale denoising approach for low-dimensional diffusion models, incorporating a novel architecture with two parallel branches (global and local) and a learnable, timestep-conditioned weighting mechanism. This aims to balance global structure and local details in generated samples. The method is evaluated on four diverse 2D datasets: circle, dino, line, and moons, showing some improvements in sample quality with some reductions in KL divergence.",
+    "Strengths": [
+        "Addresses an important and practical problem in applying diffusion models to low-dimensional data.",
+        "Introduces a novel dual-scale architecture with adaptive weighting to balance global and local features.",
+        "Comprehensive experimental evaluations on multiple datasets.",
+        "Visualization of weight evolution across timesteps provides insight into model behavior."
+    ],
+    "Weaknesses": [
+        "Lacks clarity and detail in explaining adaptive mechanisms and design choices.",
+        "Limited comparisons with other state-of-the-art methods in low-dimensional generative models.",
+        "Increased computational complexity without sufficient justification or discussion on mitigation.",
+        "Marginal or negative improvements in some cases, raising robustness concerns.",
+        "Ethical considerations and societal impacts are not addressed."
+    ],
+    "Originality": 2,
+    "Quality": 2,
+    "Clarity": 2,
+    "Significance": 2,
+    "Questions": [
+        "Can you provide more details on the design choices and adaptive mechanisms?",
+        "How do you justify the increased computational complexity, and are there any plans to mitigate this?",
+        "Can you include comparisons with other state-of-the-art methods in low-dimensional generative models?",
+        "Can you provide more theoretical analysis to justify the design choices of the dual-scale architecture and the adaptive weighting mechanism?",
+        "Have you considered evaluating the proposed method on more complex and diverse datasets to demonstrate its generalizability?",
+        "Can you provide more details on the training process and the specific architectures of the global and local branches to improve reproducibility?",
+        "How do you plan to address the increased computational cost of the proposed method in practical applications?",
+        "Can the authors provide more detailed theoretical analysis or justification for the proposed dual-scale approach?",
+        "How does the method perform on higher-dimensional datasets or more complex real-world scenarios?",
+        "Are there any strategies to mitigate the increased computational complexity and training time?",
+        "Can the authors provide more detailed explanations of the adaptive weighting mechanism and its implementation?",
+        "What are the potential ways to reduce the computational complexity while maintaining the benefits of the dual-scale approach?",
+        "Can the authors include more rigorous ablation studies to isolate the contributions of each component of the proposed method?"
+    ],
+    "Limitations": [
+        "The paper does not sufficiently address the increased computational complexity and its implications.",
+        "The marginal improvements on some datasets raise concerns about the robustness and consistency of the method.",
+        "The paper does not adequately address the limitations and potential negative societal impacts of the proposed method. The increased computational cost and the limited evaluation on simple datasets are major concerns.",
+        "The applicability of the method to higher-dimensional data and more complex scenarios is not discussed in depth."
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 2,
+    "Presentation": 2,
+    "Contribution": 2,
+    "Overall": 3,
+    "Confidence": 4,
+    "Decision": "Reject"
+}

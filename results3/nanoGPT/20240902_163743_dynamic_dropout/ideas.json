@@ -1,0 +1,110 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_dropout",
+        "Title": "Dynamic Dropout Rates: Adaptive Regularization for Efficient Transformer Training",
+        "Experiment": "Modify the training loop to adjust dropout rates dynamically. Implement a linear decay of the dropout rate from an initial value to a final value over the course of training. Update the dropout rate at the end of each epoch. Ensure the dropout rate does not fall below a minimum threshold. Evaluate the impact on training dynamics, convergence speed, and final performance. Compare with fixed dropout rate models to demonstrate efficacy.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_parameter_freezing",
+        "Title": "Adaptive Parameter Freezing: Enhancing Training Efficiency in Transformer Models",
+        "Experiment": "Modify the training loop to include stages where parameters of earlier layers are gradually frozen. Divide the training process into several stages (e.g., quarters of the total iterations). At the end of each stage, freeze the parameters of the first N layers, where N increases with each stage. Evaluate the impact on training dynamics, convergence speed, and final performance. Compare with the baseline model where no parameters are frozen.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_learning_rate",
+        "Title": "Adaptive Learning Rate Schedules: Enhancing Training Efficiency in Character-Level Language Models",
+        "Experiment": "Implement an adaptive learning rate schedule that adjusts the learning rate based on the rate of change in training loss. Modify the get_lr function to dynamically increase or decrease the learning rate based on the moving average of the loss difference between iterations. Log the learning rates and training loss during training. Compare the training dynamics, convergence speed, and final performance with the baseline model using fixed learning rate schedules.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_layer_scaling",
+        "Title": "Dynamic Layer Scaling: Adaptive Model Depth Adjustment for Efficient Training",
+        "Experiment": "Implement a mechanism to monitor training convergence based on loss trends. Define clear criteria for adding/removing transformer layers, such as a threshold for loss improvement/stagnation. Modify the training loop to dynamically adjust model depth based on these criteria. Ensure proper weight initialization and model stability when layers are added. Evaluate the impact on training dynamics, speed, and final performance compared to a static model architecture.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning: Leveraging Data Complexity for Efficient Training in Character-Level Language Models",
+        "Experiment": "Implement curriculum learning by dividing the training data into different difficulty levels based on sequence length and/or character frequency. Modify the training loop to start with the easiest dataset and progressively include more difficult examples. Use criteria such as achieving a certain loss threshold or a fixed number of iterations without improvement to transition between difficulty levels. Evaluate the impact on training dynamics, convergence speed, and final performance by comparing with a baseline model trained without curriculum learning.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "attention_head_pruning",
+        "Title": "Attention Head Pruning: Enhancing Efficiency in Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to include a mechanism for evaluating the importance of each attention head based on a running average of attention weights or gradients. Implement a pruning strategy that removes the least important heads at predefined intervals (e.g., every 1000 iterations). Adjust the training loop to incorporate the pruning process. Evaluate the impact on training dynamics, convergence speed, and final performance compared to the baseline model.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "multi_resolution_training",
+        "Title": "Multi-Resolution Training: Enhancing Language Models with Variable Sequence Lengths",
+        "Experiment": "Modify the training loop to alternate between different block sizes (sequence lengths) during training. Update the positional embeddings and related configurations dynamically to accommodate the changing block sizes. Evaluate the impact on training dynamics, convergence speed, and final performance compared to a baseline model trained with a fixed block size.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "ensemble_learning",
+        "Title": "Ensemble Learning: Improving Robustness and Performance in Transformer Models",
+        "Experiment": "Modify the training script to train three instances of the GPT model with different initializations. During inference, combine the outputs of these models by averaging the logits to make final predictions. Evaluate the performance of the ensemble compared to individual models in terms of training and validation loss.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "mixed_precision_training",
+        "Title": "Mixed Precision Training: Balancing Efficiency and Stability in Character-Level Language Models",
+        "Experiment": "Modify the training loop to implement mixed precision training using torch.cuda.amp. Dynamically switch between float16 and float32 during different parts of the training process. Evaluate the impact on training speed, convergence, and final performance compared to the baseline model.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "multi_task_learning",
+        "Title": "Multi-Task Learning: Enhancing Generalization and Robustness in Character-Level Language Models",
+        "Experiment": "Modify the training loop to alternate between different datasets (e.g., 'shakespeare_char', 'enwik8', 'text8') in a round-robin fashion or based on specific criteria such as training loss or a number of iterations. Introduce task-specific heads (output layers) for each dataset to allow the model to specialize in each task. Evaluate the impact on training dynamics, convergence speed, and final performance compared to single-task training. Use metrics such as validation loss on each dataset and performance on an unseen dataset to demonstrate the efficacy of multi-task learning.",
+        "Interestingness": 10,
+        "Feasibility": 8,
+        "Novelty": 9,
+        "novel": true
+    }
+]

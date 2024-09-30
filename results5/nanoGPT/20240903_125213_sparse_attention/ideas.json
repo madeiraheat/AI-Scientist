@@ -1,0 +1,110 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": false
+    },
+    {
+        "Name": "random_character_substitution",
+        "Title": "Random Character Substitution: Enhancing Robustness and Generalization in Character-Level Language Models",
+        "Experiment": "Modify the get_batch function to randomly replace a small percentage (e.g., 1%, 5%, 10%) of characters in the training data with other characters from the vocabulary. Implement a function to perform this substitution. Compare the training and validation losses, as well as the generated text quality and perplexity, with the baseline model to evaluate the impact of the augmentation. Test different substitution rates to find the optimal one. Log the frequency and impact of substitutions on individual batches for a detailed analysis.",
+        "Interestingness": 7,
+        "Feasibility": 8,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "initialization_schemes",
+        "Title": "Exploring Initialization Schemes: Impact on Training Dynamics and Model Performance",
+        "Experiment": "Modify the _init_weights function to incorporate different initialization schemes: standard normal initialization, Xavier (Glorot) initialization, and He initialization. Train separate models with each initialization scheme and compare their training and validation losses, convergence speed, and final performance metrics like perplexity. Additionally, log the gradients to observe stability during training. Ensure consistent evaluation across all models to provide a comprehensive comparison.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "progressive_layer_freezing",
+        "Title": "Progressive Layer Freezing: Enhancing Training Efficiency and Generalization in Transformer Models",
+        "Experiment": "Modify the training loop to include a schedule for progressively freezing layers. Implement a mechanism to freeze specific layers by setting 'requires_grad' to 'False' for their parameters. Determine a schedule for freezing layers, such as freezing one layer every 1000 iterations. Compare the training and validation losses, convergence speed, and final performance metrics like perplexity with the baseline model. Provide a detailed analysis of the impact of layer freezing on the training dynamics and final model performance.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": false
+    },
+    {
+        "Name": "auxiliary_masked_character_prediction",
+        "Title": "Auxiliary Masked Character Prediction: Enhancing Character-Level Language Models",
+        "Experiment": "Modify the training loop to include an auxiliary masked character prediction task. In the get_batch function, randomly select a small percentage (e.g., 10%) of characters in each training batch to mask. Implement a function to perform this masking and task the model with predicting these masked characters. Calculate the masked character prediction loss and combine it with the standard next character prediction loss, using a weighted sum (e.g., weight of 0.5 for each loss). Compare the training and validation losses, generalization performance, and generated text quality with the baseline model. Additionally, experiment with different masking percentages and loss weightings to determine the optimal configuration.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "sparse_attention",
+        "Title": "Sparse Attention Mechanism: Efficient Long-Range Dependency Capture in Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to implement a sparse attention mechanism. Create a sparse attention mask that allows the model to attend to a subset of tokens. Experiment with different sparsity patterns like fixed intervals (e.g., every 5th token), local windows (e.g., attending only to the last 10 tokens), and random sampling (e.g., 20% of tokens randomly selected). Compare the training and validation losses, convergence speed, and final performance, including the ability to capture long-range dependencies, with the baseline model. Evaluate the computational efficiency improvements by measuring the time per training iteration and memory usage.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_gradient_clipping",
+        "Title": "Adaptive Gradient Clipping: Enhancing Training Stability in Transformer Models",
+        "Experiment": "Modify the training loop to include an adaptive mechanism for gradient clipping. Implement a strategy to adjust the gradient clipping value based on the training loss trends. Specifically, increase the clipping value when the training loss consistently decreases over a set number of iterations, and decrease it when the loss increases or oscillates. Compare the training and validation losses, convergence speed, and final performance with the baseline model. Provide a detailed analysis of how the adaptive gradient clipping affects the training dynamics and model stability.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "multi_task_word_boundary",
+        "Title": "Multi-Task Learning for Character-Level Language Models: Predicting Word Boundaries",
+        "Experiment": "Modify the GPT model to include an additional output head for predicting word boundaries. Update the forward function to output both character logits and word boundary logits. Create a function to generate binary labels for word boundaries in the training data. Adjust the loss function to combine the character prediction loss and the word boundary prediction loss using a weighted sum. Experiment with different weightings for the combined loss to find the optimal configuration. Compare the training and validation losses, generalization performance, and generated text quality with the baseline model.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_attention_scaling",
+        "Title": "Dynamic Attention Scaling: Enhancing Focus on Critical Tokens in Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to include dynamic attention scaling. Implement a mechanism to adjust the attention weights based on the prediction confidence of tokens. Use the negative log-likelihood of the predicted token probabilities as the difficulty measure. Adjust the attention weights accordingly during training. Compare the training and validation losses, convergence speed, and final performance with the baseline model. Provide a detailed analysis of how dynamic attention scaling affects the training dynamics and model performance.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "rl_fine_tuning",
+        "Title": "Reinforcement Learning Fine-Tuning: Enhancing Language Models for Long-term Coherence and Relevance",
+        "Experiment": "Integrate a reinforcement learning (RL) loop with the language model using an existing RL library like Stable Baselines3. Implement an RL agent using algorithms like PPO or REINFORCE. Design a reward function that captures the desired properties of generated text, such as coherence and perplexity reduction. Use the RL agent to fine-tune the language model based on feedback from the reward function. Compare the performance of the RL-fine-tuned model with the baseline model on metrics like perplexity, coherence, and relevance.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning: Progressive Context Length Adjustment for Efficient Training",
+        "Experiment": "Modify the get_batch function to start with a smaller block size and gradually increase it based on the iteration number. Implement both linear and exponential curriculum schedules to adjust the block size. Compare the training and validation losses, convergence speed, and final performance with the baseline model and a control model with constant block size. Evaluate the impact on the model's ability to capture long-range dependencies and generalization.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    }
+]

@@ -1,0 +1,110 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": true
+    },
+    {
+        "Name": "char_level_data_augmentation",
+        "Title": "Character-Level Data Augmentation: Enhancing Model Robustness and Generalization",
+        "Experiment": "Implement data augmentation techniques at the character level. Modify the get_batch function to include random character modifications such as insertion, deletion, swapping, and substitution. Ensure that these augmentations are applied with a low probability to avoid excessive distortion of the training data. Evaluate the performance by comparing the training dynamics, convergence speed, and final performance (accuracy, loss) on the validation set with the baseline model. Additionally, test the robustness of the model by evaluating its performance on slightly perturbed validation data.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_gradient_clipping",
+        "Title": "Adaptive Gradient Clipping: Enhancing Training Stability and Convergence",
+        "Experiment": "Modify the training loop to include an adaptive gradient clipping threshold. Implement a mechanism to adjust the clipping threshold based on a moving average of gradient norms observed during training. Specifically, calculate the gradient norms at each iteration, adjust the clipping threshold based on these norms, and apply the adaptive clipping threshold during the backward pass. Compare the training dynamics, convergence speed, and final performance with the baseline model using no clipping and a fixed gradient clipping threshold.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning for Character-Level Language Models: Gradual Increase in Sequence Length",
+        "Experiment": "Modify the training loop to start with a smaller block size and gradually increase it during training. Implement a linear schedule where the block size increases by a fixed amount at regular intervals. Specifically, modify the train function to include parameters for initial block size, block size increment, and interval for increasing block size. Adjust the get_batch function and model configuration dynamically based on the current block size. Measure and compare the training dynamics, convergence speed, and final performance with the baseline model that uses a fixed block size.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "structured_dropout",
+        "Title": "Structured Dropout for Transformers: Enhancing Robustness through Attention Head and Layer Dropout",
+        "Experiment": "Modify the CausalSelfAttention and MLP classes to include a structured dropout mechanism. Introduce two new hyperparameters: attention_head_dropout_rate and mlp_layer_dropout_rate. Implement the structured dropout by randomly dropping entire attention heads or MLP layers with the given probabilities during training. Adjust the corresponding forward functions to account for the structured dropout. Compare the training dynamics, convergence speed, and final performance on the validation set with the baseline model using standard dropout.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "sparse_attention",
+        "Title": "Sparse Attention Mechanism: Efficient Training for Character-Level Language Models",
+        "Experiment": "Modify the CausalSelfAttention class to implement a sparse attention mechanism using a sliding window approach combined with global tokens. Each token will attend to a subset of tokens within a local window and a few global tokens beyond this window. Adjust the forward function to compute attention weights only for the selected subset of tokens. Evaluate the model in terms of computational efficiency (memory usage, training time) and performance metrics (validation loss) compared to the baseline model using traditional dense attention.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "multi_task_learning",
+        "Title": "Multi-Task Learning for Character-Level Language Models: Leveraging Synergy Between Datasets",
+        "Experiment": "Modify the train function to handle multiple datasets concurrently. Implement a mechanism to sample mini-batches from different datasets in an interleaved fashion, ensuring balanced sampling across tasks. Adjust the training loop to update the model parameters based on the combined loss from multiple tasks, using a dynamically weighted sum to balance their contributions based on the model's performance on each task. Specifically, modify the get_batch function to accept a dataset identifier and return mini-batches from the corresponding dataset. Evaluate the performance by comparing the training dynamics, convergence speed, and final performance on validation sets of individual datasets with the baseline models trained separately on each dataset. Aggregate the validation results to determine the overall performance.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "knowledge_distillation",
+        "Title": "Knowledge Distillation: Enhancing Small Language Models with Teacher Guidance",
+        "Experiment": "Use a larger pre-trained GPT model as the teacher. Modify the train function to include an additional distillation loss term. Specifically, load the teacher model and generate soft predictions (logits) for the training data. Implement a new loss function that combines the original cross-entropy loss with the KL-divergence between the student's and teacher's predictions. Adjust the training loop to balance these losses using a weighting factor. Evaluate the performance of the student models trained with and without knowledge distillation on the validation set. Measure metrics such as validation loss, training time, and inference speed for a comprehensive comparison.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": false
+    },
+    {
+        "Name": "attention_sparsity_patterns",
+        "Title": "Attention Sparsity Patterns: Enhancing Efficiency in Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to implement structured sparsity patterns in the attention mechanism. Explore different sparsity patterns like block-sparsity (attending to fixed blocks) and fixed random sparsity (randomly selected fixed attention connections). Adjust the forward function to compute attention weights only for the selected sparse connections. Compare the computational efficiency (memory usage, training time) and performance metrics (validation loss) with the baseline model using dense attention. Evaluate the impact of each sparsity pattern to determine the optimal balance between efficiency and performance.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "multi_scale_attention",
+        "Title": "Multi-Scale Attention Mechanism: Enhancing Contextual Understanding in Language Models",
+        "Experiment": "Modify the CausalSelfAttention class to incorporate multi-scale attention heads. Implement multiple attention heads with different receptive field sizes within the same self-attention layer. Adjust the forward function to compute attention weights for each scale separately, concatenate their outputs, and project them back to the original dimension using a linear layer. Evaluate the model's performance in terms of validation loss and computational efficiency compared to the baseline model using traditional single-scale attention.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_content_attention",
+        "Title": "Adaptive Content-based Attention: Enhancing Contextual Focus in Character-Level Language Models",
+        "Experiment": "Modify the CausalSelfAttention class to include a gating mechanism that modulates attention weights based on input content. Implement a feedforward neural network as the gating function that takes the input features and outputs a gating vector. Adjust the attention weights by element-wise multiplying them with the gating vector. Evaluate the impact on training dynamics, convergence speed, and final performance compared to the baseline model.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": true
+    }
+]

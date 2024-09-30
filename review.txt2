@@ -1,0 +1,52 @@
+{
+    "Summary": "The paper introduces an adaptive dual-scale denoising approach for low-dimensional diffusion models. The proposed architecture features two parallel branches: a global branch processing the original input and a local branch handling an upscaled version. A learnable, timestep-conditioned weighting mechanism dynamically balances their contributions. The method is evaluated on four 2D datasets, showing significant improvements in sample quality, with reductions in KL divergence compared to a baseline model.",
+    "Strengths": [
+        "Addresses an important issue of balancing global structure and local details in low-dimensional diffusion models.",
+        "Proposes a novel architecture with a dual-scale approach and a learnable, timestep-conditioned weighting mechanism.",
+        "Shows significant improvements in sample quality across diverse datasets."
+    ],
+    "Weaknesses": [
+        "The paper lacks clarity in its explanations, particularly in the description of the proposed method. The details on the learnable linear transformation for upscaling and the weight network could be more explicit.",
+        "The evaluation criteria are somewhat narrow, focusing primarily on KL divergence and visual inspection. Additional metrics, such as FID or other generative quality measures, would strengthen the evaluation.",
+        "The computational overhead introduced by the proposed method is substantial. While noted, the paper does not provide sufficient discussion on how to mitigate this issue or whether the improvements justify the increased cost.",
+        "The experiments lack a thorough ablation study to understand the effect of each component. For example, the impact of the global branch alone, the local branch alone, and different weight mechanisms should be more rigorously assessed.",
+        "The novelty is somewhat limited when considering the broader context of generative models, especially those in high-dimensional spaces.",
+        "The theoretical grounding for the proposed approach is weak, with insufficient explanation of why the dual-scale method should work better on a fundamental level.",
+        "Empirical results are limited to low-dimensional datasets, raising concerns about the generalizability of the approach to more complex, higher-dimensional data.",
+        "The clarity of the methodology section is insufficient. Key details about the architecture and training process are either missing or not well-explained, making it challenging to reproduce the results."
+    ],
+    "Originality": 2,
+    "Quality": 2,
+    "Clarity": 2,
+    "Significance": 2,
+    "Questions": [
+        "Can the authors provide more detailed explanations of the learnable linear transformation for upscaling and the weight network?",
+        "Why were only KL divergence and visual inspection used as evaluation metrics? Could additional metrics, such as FID, be included?",
+        "How do the authors justify the significant computational overhead introduced by the method? Are there any strategies to mitigate this?",
+        "Can the authors conduct a more thorough ablation study to isolate the impact of each component of the proposed method?",
+        "Can the authors provide more theoretical insights into why the dual-scale approach is particularly effective for low-dimensional diffusion models?",
+        "How does the increased computational complexity impact the practicality of the proposed method in real-world applications?",
+        "Are there plans to extend the evaluation to higher-dimensional datasets or more complex real-world problems?",
+        "Can the authors provide more detailed explanations and visualizations of the architecture and training process to improve reproducibility?",
+        "Please provide a more detailed explanation of the autoencoder aggregator.",
+        "Can you justify the increased computational complexity and its trade-offs?",
+        "Could you include more rigorous ablation studies to validate the contributions of each component?",
+        "How does the method perform on more complex, real-world datasets?",
+        "Can the authors compare their method with a broader set of baseline methods?"
+    ],
+    "Limitations": [
+        "The paper does not sufficiently address the high computational cost of the proposed method, which could limit its practical applicability.",
+        "The experimental evaluation is somewhat limited in scope and depth, lacking additional metrics and thorough ablations to fully validate the approach.",
+        "The primary limitations of this work include increased computational complexity and limited empirical validation on low-dimensional datasets. Additionally, the theoretical basis for the method's effectiveness is not thoroughly explored, and the novelty is somewhat constrained by existing work in multi-scale generative models.",
+        "The increased computational cost may make the method less suitable for applications with strict time constraints.",
+        "The performance shows variability for more complex data distributions, indicating potential inconsistency.",
+        "The trade-off between improved sample quality and increased computational complexity needs careful consideration."
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 2,
+    "Presentation": 2,
+    "Contribution": 2,
+    "Overall": 3,
+    "Confidence": 4,
+    "Decision": "Reject"
+}
